@@ -1,0 +1,18 @@
+# dockerディレクトリ下に作成される、すべての https-portal-nginx.conf ディレクトリを無視
+https-portal-nginx.conf
+
+# https-portal 用の証明書
+/certs
+
+# 各デプロイ環境用の .envファイル はコミット対象外
+.env.staging
+.env.testing
+.env.develop
+
+＃ 品質管理用スクリプトの実行結果を出力するディレクトリ
+/qa/results/*
+!/qa/results/.gitkeep
+＃ カバレッジレポート
+/clover.xml
+＃ 品質管理用パッケージが生成するキャッシュファイル
+/.deptrac.cache

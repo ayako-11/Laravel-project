@@ -1,0 +1,51 @@
+name: Check Merge Requirements
+on:
+  pull_request:
+    types: [ synchronize, opened, reopened ]
+    branches:
+      - 'master'
+      - 'develop'
+    paths:
+      - '**.php'
+      - '**.xml'
+      - '**.yml'
+      - 'composer.json'
+      - 'composer.lock'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install PHP dependencies
+        uses: php-actions/composer@v6
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.PERSONAL_ACCESS_TOKEN_FOR_COMPOSER}}"} }'
+        with:
+          php_version: "8.2"
+          php_extensions: exif gd zip
+          version: 2
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - name: Install javascript dependencies
+        run: npm ci
+      - name: deploy
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{secrets.PERSONAL_ACCESS_TOKEN_FOR_COMPOSER}}"} }'
+        run: ./operation/120-after-pull.sh testing ${{ secrets.ENV_TESTING_ENCRIPT_KEY }}
+      - name: Generate key
+        run: php artisan key:generate
+      - name: Execute static analysis
+        run: vendor/bin/balocco-qa run sa
+      - name: Execute tests
+        run: vendor/bin/phpunit --no-coverage
