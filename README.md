@@ -1,135 +1,66 @@
-# laravel-base
-- このリポジトリはLaravelプロジェクトの雛形です。新規にプロジェクトを立ち上げる際に利用してください。
-- 全社に共通で採用された方針などの実装は、このリポジトリで管理します。
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-# 利用手順
-## 0.準備
-- baloccoのprivateリポジトリにアクセス可能な権限を持つPAT（personal access token）を作成する
-- PATの作成方法については [githubのドキュメント参照](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) を参照。
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## 1.Laravel環境コンテナの起動
-以下手順を実施し、Laravel 11 が動作する環境を構築します。
+## About Laravel
 
-### ダウンロード
-本リポジトリのソースコードをダウンロードする(cloneではない)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-### .envの作成 
-ダウンロードしたソースコードをDockerが利用可能なディレクトリに配置し、`.env.example` をコピーし `.env` を作成する
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-### .envの編集
-- 作成した`.env` を編集する。
-- 通常は、`APP_DOMAIN_NAME` のみ変更すれば良い
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-### 環境の起動
-以下コマンドを実行し、コンテナを起動する
-```sh
-docker compose up -d
-```
+## Learning Laravel
 
-### Nginx、https-portal の動作確認
-- ローカル端末のhostsファイルに記載する等して、`APP_DOMAIN_NAME` の名前解決ができる状態にする
-- https://`APP_DOMAIN_NAME` にブラウザからアクセスし、`File not found` が表示されることを確認する
-  - この時点では、Laravelが動作する環境の構築のみが完了した状態です。
-    - Laravelのソースコード自体はまだ存在していない状態のため、File not found となります。
-- 環境の詳細は、[docker-compose-local.yml](./docker-compose-local.yml) を参照してください。
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-## 2.Laravelセットアップ（010-init-laravel.sh）
-以下手順を実施し、Laravel 11 ソースコードを配置します。
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### コンテナへのログイン
-Dockerコンテナのlaravelサービスにログインする。
-```sh
-docker compose exec laravel bash
-```
+## Laravel Sponsors
 
-### シェルの実行権限の変更
-operation ディレクトリ内のシェルに実行権限を付与する。
-```shell
-chmod 755 ./operation/*
-```
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### 010-init-laravel.sh の実行
-このシェルは、Laravelの最新stableをダウンロードして、不要ファイルの削除、一部ファイル（.gitignoreなど）のマージを行った上で、プロジェクトルートディレクトリにLaravelのソースコードをセットアップします。
+### Premium Partners
 
-シェルが成功すると、Laravel 11 stableが実行可能な状態となります。
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-- 実行時にgithubから認証情報を求められた場合は、準備の時点で作成したPATを入力する。
-- 実行中にcomposerから確認を求められた場合は、「y（yes）」を選択する。
+## Contributing
 
-```shell
-./operation/010-init-laravel.sh
-```
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### 1st commit
-main または master ブランチにcommitを行う。
+## Code of Conduct
 
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## 3.依存パッケージの追加とプロジェクトのセットアップ（020-setup-project.sh）
-以下手順を実施し、開発に必要なLaravel以外のパッケージのインストール、セットアップを行います。
+## Security Vulnerabilities
 
-### コンテナへのログイン
-Dockerコンテナのlaravelサービスにログインする。
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### 020-setup-project.sh の実行
-このシェルは、composer.jsonを更新し、開発に必要なパッケージの導入と、セットアップを行います。
-シェルが成功すると、以下のパッケージが利用可能な状態となります。
+## License
 
-- git-balocco/php-qa-utils
-- k-yamamoto-balocco/laravel-ui-cli
-- k-yamamoto-balocco/laravel-env-documentator
-- php-flasher/flasher-notyf-laravel
-
-
-- 実行時にgithubから認証情報を求められた場合は、準備の時点で作成したPATを入力する。
-- 実行中にcomposerから確認を求められた場合は、「y（yes）」を選択する。
-```shell
-./operation/020-setup-project.sh
-```
-
-### 2nd commit
-main または master ブランチにcommitを行う
-
-ここまでで、開発を開始するためのソースコードの準備が完了します。
-
-## 4.開発ドキュメントの確認
-docsディレクトリ以下に格納されているプロジェクトに関するドキュメントの雛形の内容を確認し、実際のプロジェクトに即した内容に適宜修正してコミットします。
-docsディレクトリは、ドキュメントが取り扱う領域ごとに、以下の4つのサブディレクトリに分かれます。
-
-### development（開発）
-開発全般に関するドキュメントは、[docs/development/](./docs/development) ディレクトリ以下に格納します。
-
-主要なドキュメントを以下に示します。
-
-- [開発/Overview](./docs/development/001-overview.md)
-- [開発/Environment（デプロイ環境）](./docs/development/030-environment.md)
-- [開発/Workflow](./docs/development/040-workflow.md)
-
-### domain
-ここで言うdomainとは、このプロジェクトが解決の対象とする問題、関心領域を指す語です。
-
-開発に関わるメンバーが理解、把握しておくべきdomainに関する資料は、[docs/domain/](./docs/domain) ディレクトリ以下に格納します。
-
-### infrastructure
-アプリケーションが動作するシステム基盤に関連する資料は、[docs/infrastructure/](./docs/infrastructure) ディレクトリに格納します。
-
-### quality-assurance
-アプリケーションの品質保証に関連する資料は、[docs/quality-assurance/](./docs/quality-assurance) ディレクトリに格納します。
-
-主要なドキュメントを以下に示します。
-
-- [品質保証/Overview](./docs/quality-assurance/001-overview.md)
-- [品質保証/Commit基準](./docs/quality-assurance/010-commit.md)
-- [品質保証/Merge基準](./docs/quality-assurance/020-merge.md)
-- [品質保証/Release基準](./docs/quality-assurance/030-release.md)
-
-# 補足事項
-## 品質保証用スクリプト
-020-setup-project.sh の実行によって、品質管理用のチェックプログラムが利用可能となります。
-Dockerコンテナのlaravelサービスにログインした状態で、以下コマンドを実行してください。
-```shell
-vendor/bin/balocco-qa run sa
-```
-
-## ポート番号について
-- https-portalのポート番号は、443で固定としている。
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
