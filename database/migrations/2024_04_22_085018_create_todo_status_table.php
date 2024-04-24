@@ -11,19 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todo_status', function (Blueprint $table) {
-            $table->id();
-            $table->string('status')->nullable(false);
-            $table->integer('sequence')->nullable(false)->unique;
-            $table->timestamps();
+        if (!Schema::hasTable('statuses')) {
+        Schema::create('statuses', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->string('name')->nullable(false);
+            $table->integer('sort_sequence')->nullable(false)->unique;
+            $table->timestamp('created_at')->nullable(false);
+        });
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->foreign('status_id')->references('id')->on('statuses');
         });
     }
+}
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('todo_status');
+        Schema::table('tasks', function(Blueprint $table){ 
+            $table->dropForeign(['status_id']);
+        });
+
+        Schema::dropIfExists('statuses');
     }
 };

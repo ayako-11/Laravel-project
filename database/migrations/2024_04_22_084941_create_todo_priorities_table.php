@@ -12,19 +12,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todo_priorities', function (Blueprint $table) {
-            $table->id();
-            $table->string('priority')->nullable(false);
-            $table->integer('sequence')->nullable(false)->unique();
-            $table->timestamps();
+        if (!Schema::hasTable('priorities')) {
+        Schema::create('priorities', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->string('name')->nullable(false);
+            $table->integer('sort_sequence')->nullable(false)->unique();
+            $table->timestamp('created_at')->nullable(false);
+        });
+        Schema::table('tasks', function (Blueprint $table){
+            $table->foreign('priority_id')->references('id')->on('priorities');
         });
     }
-
+}
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('todo_priorities');
+        Schema::table('tasks', function(Blueprint $table){ 
+            $table->dropForeign(['priority_id']);
+        });
+
+        Schema::dropIfExists('priorities');
     }
 };
