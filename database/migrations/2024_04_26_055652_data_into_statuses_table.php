@@ -23,7 +23,13 @@ class DataIntoStatusesTable extends Migration
      * Reverse the migrations.
      */
     public function down(): void
+    
     {
-        // No need to revert the data insertion
-    }
+            // データ削除
+        DB::table('statuses')->where('id', 10)->delete();
+        DB::table('statuses')->where('id', 20)->delete();
+        DB::table('statuses')->where('id', 30)->delete();
+        DB::table('statuses')->where('id', 40)->delete();
+     }
+    
 }

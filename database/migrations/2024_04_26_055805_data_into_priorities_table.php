@@ -23,7 +23,9 @@ class DataIntoPrioritiesTable extends Migration
      */
     public function down(): void
     {
-        // No need to revert the data insertion
+        DB::table('priorities')->where('id', 10)->delete();
+        DB::table('priorities')->where('id', 20)->delete();
+        DB::table('priorities')->where('id', 30)->delete();
     }
 }
 
