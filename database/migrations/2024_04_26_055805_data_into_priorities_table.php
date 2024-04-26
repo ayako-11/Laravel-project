@@ -10,7 +10,7 @@ class DataIntoPrioritiesTable extends Migration
      */
     public function up(): void
     {
-        // Insert data into priorities table
+        // データ挿入
         DB::table('priorities')->insert([
             ['id' => 10, 'name' => 'urgent', 'sort_sequence' => 10, 'created_at' => now()],
             ['id' => 20, 'name' => 'high', 'sort_sequence' => 20, 'created_at' => now()],
