@@ -118,4 +118,3 @@
     </script>
 </body>
 </html>
-<?php /**PATH /var/www/html/resources/views/search.blade.php ENDPATH**/ ?>
