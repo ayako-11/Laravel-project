@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-    "name": "laravel/laravel",
-=======
     "name": "ayako-sugiyama/laravel-onbording",
->>>>>>> 5469f665457eb8ae6e814d0cf487a331094aa69b
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
@@ -11,17 +7,6 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
-<<<<<<< HEAD
-        "laravel/tinker": "^2.9"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "*",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0.1",
-=======
         "laravel/tinker": "^2.9",
         "php-flasher/flasher-notyf-laravel": "^1.15"
     },
@@ -34,7 +19,6 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "phpunit/phpunit": "^10.0",
->>>>>>> 5469f665457eb8ae6e814d0cf487a331094aa69b
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
@@ -83,8 +67,6 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "repositories": {
-<<<<<<< HEAD
-=======
         "laravel-ui-cli": {
             "type": "vcs",
             "url": "https://github.com/k-yamamoto-balocco/laravel-ui-cli.git"
@@ -93,7 +75,6 @@
             "type": "vcs",
             "url": "https://github.com/k-yamamoto-balocco/laravel-env-documentator.git"
         },
->>>>>>> 5469f665457eb8ae6e814d0cf487a331094aa69b
         "common-structures": {
             "type": "vcs",
             "url": "https://github.com/k-yamamoto-balocco/common-structures.git"
