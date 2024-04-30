@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ChangeController extends Controller
 {
-    /**
+    /*
      * Handle the incoming request and return the view.
      */
     public function __invoke(Request $request)
