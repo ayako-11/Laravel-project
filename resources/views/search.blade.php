@@ -10,6 +10,15 @@
         .container {
             margin-top: 50px;
         }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination .page-item.active .page-link {
+            z-index: 1;
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -19,7 +28,11 @@
             <div class="mb-3">
                 <label for="due_date">期限</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="due_date" placeholder="開始年/月/日 ~ 終了年/月/日">
+                    <input type="text" class="form-control" id="start_due_date" name="start_due_date" placeholder="開始年/月/日">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">~</span>
+                    </div>
+                    <input type="text" class="form-control" id="end_due_date" name="end_due_date" placeholder="終了年/月/日">
                 </div>
             </div>
             <div class="mb-3">
@@ -90,7 +103,7 @@
         </form>
 
         <div class="mt-4">
-            <h2>結果</h2>
+            <h2>検索結果</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -106,7 +119,28 @@
                 </tbody>
             </table>
         </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">前ページ</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">次ページ</a>
+                </li>
+            </ul>
+        </nav>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
