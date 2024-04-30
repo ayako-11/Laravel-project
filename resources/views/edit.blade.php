@@ -13,11 +13,11 @@
         <form>
             <div class="mb-3">
                 <label for="title">件名</label>
-                <input type="text" class="form-control" id="title" placeholder="入力フォーム">
+                <input type="text" class="form-control" id="title" placeholder="件名">
             </div>
             <div class="mb-3">
                 <label for="description">詳細</label>
-                <textarea class="form-control" id="description" rows="3" placeholder="入力フォーム"></textarea>
+                <textarea class="form-control" id="description" rows="3" placeholder="詳細"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">保存</button>
         </form>

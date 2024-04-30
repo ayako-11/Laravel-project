@@ -12,7 +12,6 @@ class EditController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // ここに適切な処理を追加してください
         return view('edit');
     }
 }
