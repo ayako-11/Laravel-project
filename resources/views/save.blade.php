@@ -43,6 +43,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">登録</button>
                     </form>
+
                 </div>
 
                 <!-- Bootstrap 5 JS -->
