@@ -28,10 +28,10 @@ https-portal-nginx.conf
 .env.testing
 .env.develop
 
-＃ 品質管理用スクリプトの実行結果を出力するディレクトリ
+# 品質管理用スクリプトの実行結果を出力するディレクトリ
 /qa/results/*
 !/qa/results/.gitkeep
-＃ カバレッジレポート
+# カバレッジレポート
 /clover.xml
-＃ 品質管理用パッケージが生成するキャッシュファイル
+# 品質管理用パッケージが生成するキャッシュファイル
 /.deptrac.cache
