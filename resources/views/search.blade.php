@@ -178,7 +178,7 @@
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $task->id }}">
                                             <a class="dropdown-item" href="{{ route('edit.form', $task->id) }}">内容の編集</a>
-                                            <a class="dropdown-item" href="#">期限、優先度の変更</a>
+                                            <a class="dropdown-item" href="{{ route('change.form', $task->id) }}">期限、優先度の変更</a>
                                             <a class="dropdown-item" href="#">開始</a>
                                             <a class="dropdown-item" href="#">完了</a>
                                             <a class="dropdown-item" href="#">中止</a>
